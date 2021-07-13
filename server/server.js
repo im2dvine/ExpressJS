@@ -127,10 +127,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/formsubmissions', (req, res) => {
-    res.send(`Results: ${res}`);
-});
-
 /***Advanced***/
 
 app.post('/formsubmissions', (req, res) => {
@@ -147,6 +143,19 @@ app.use((req, res, next) => {
     console.log(req.url);
     next();
 });
+
+app.get('/formsubmissions', (req, res) => {
+    res.send(`Results: ${req.body.name}`);
+
+    res.sendStatus(200);
+});
+
+
+// app.get('/formsubmissions', (req, res) => {
+//     fs.readFile('values.json', (err, data) => {
+//         res.send(JSON.parse(data));
+//     }); 
+// });
 
 
 app.listen(3000);
